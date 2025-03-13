@@ -1,3 +1,3 @@
-![alt text](screenshots/home.png)
-![alt text](screenshots/gallery.png)
-![alt text](screenshots/profile.png)
+![alt text](./screenshots/home.jpg)
+![alt text](./screenshots/gallery.jpg)
+![alt text](./screenshots/profile.jpg)
