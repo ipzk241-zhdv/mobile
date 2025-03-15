@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "2",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "3",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "4",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "5",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "6",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "7",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "8",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "9",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    },
+    {
+        "id": "10",
+        "title": "Заголовок новини",
+        "date": "01.01.2025",
+        "shortText": "Короткий текст новини...",
+        "image": "https://ztu.edu.ua/img/logo/university-colored.png"
+    }
+]
