@@ -1,17 +1,26 @@
-import StoreIcon from "../assets/icons/StoreIcon.svg"
+import StoreIcon from "../assets/icons/StoreIcon.svg";
 import CommunityIcon from "../assets/icons/CommunityIcon.svg";
 import ChatIcon from "../assets/icons/ChatIcon.svg";
 import SafetyIcon from "../assets/icons/SafetyIcon.svg";
 import ProfileIcon from "../assets/icons/ProfileIcon.svg";
-
-console.log(StoreIcon)
+import SearchIcon from "../assets/icons/search.svg";
+import SteamIcon from "../assets/icons/steam.svg";
+import { NumberProp } from "react-native-svg";
 
 export const LoadIcons = () => {
-  return [
-    { name: "StoreScreen", Icon: StoreIcon },
-    { name: "CommunityScreen", Icon: CommunityIcon },
-    { name: "ChatScreen", Icon: ChatIcon },
-    { name: "SafetyScreen", Icon: SafetyIcon },
-    { name: "ProfileScreen", Icon: ProfileIcon },
-  ];
+    return [
+        { name: "StoreScreen", Icon: StoreIcon },
+        { name: "CommunityScreen", Icon: CommunityIcon },
+        { name: "ChatScreen", Icon: ChatIcon },
+        { name: "SafetyScreen", Icon: SafetyIcon },
+        { name: "ProfileScreen", Icon: ProfileIcon },
+        { name: "search", Icon: SearchIcon },
+        { name: "steam", Icon: SteamIcon },
+    ];
+};
+
+export const GetIcon = (icon: string, size: NumberProp, stroke: string, fill: string) => {
+    const IcoEntry = LoadIcons().find((ico) => ico.name === icon);
+    const Icon = IcoEntry?.Icon;
+    return Icon ? <Icon width={size} height={size} stroke={stroke} fill={fill} /> : null;
 };

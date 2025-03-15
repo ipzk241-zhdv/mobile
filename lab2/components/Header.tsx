@@ -1,0 +1,44 @@
+import { GetIcon, LoadIcons } from "../utils/LoadIcons";
+import styled from "styled-components/native";
+import React from "react";
+import { useTheme } from "styled-components";
+
+const Icons = LoadIcons();
+
+const HeaderStyles = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px;
+    margin-top: 0px;
+    background-color: ${(props) => props.theme.background};
+`;
+
+const HeaderTitle = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+`;
+
+const CaptionText = styled.Text`
+    color: ${(props) => props.theme.text};
+    font-size: 25px;
+    margin-left: 15px;
+`;
+
+interface HeaderProps {
+    caption: string;
+}
+
+export const HeaderWithoutSearchView: React.FC<HeaderProps> = ({ caption }) => {
+    const theme = useTheme();
+    return (
+        <HeaderStyles>
+            <HeaderTitle>
+                {GetIcon("steam", 36, "none", theme.text)}
+                <CaptionText>{caption}</CaptionText>
+            </HeaderTitle>
+        </HeaderStyles>
+    );
+};
