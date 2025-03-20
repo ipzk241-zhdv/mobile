@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Dead by Daylight",
+        "originalPrice": "18$",
+        "currentPrice": "5$",
+        "discountPercent": "70%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows", "Mac"],
+        "background": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Dead_by_Daylight_Steam_header.jpg/220px-Dead_by_Daylight_Steam_header.jpg"
+    },
+    {
+        "name": "Grand Theft Auto V",
+        "originalPrice": "20$",
+        "currentPrice": "10$",
+        "discountPercent": "50%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows"],
+        "background": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
+    },
+    {
+        "name": "Battlefield 4",
+        "originalPrice": "35$",
+        "currentPrice": "35$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows"],
+        "background": "https://image.api.playstation.com/cdn/EP0006/CUSA00049_00/yr7mT6NKWN22Mjdl7dH9BTy6KfWS5fFE.png?w=440"
+    },
+    {
+        "name": "Factorio",
+        "originalPrice": "7$",
+        "currentPrice": "7$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows", "Mac"],
+        "background": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000056818/c700b4cc22a81c2099335d83fe379e9cdc6afd190a9985f74ba8f7e589f4ffd2"
+    },
+    {
+        "name": "Horizon Zero Dawn",
+        "originalPrice": "38$",
+        "currentPrice": "38$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows"],
+        "background": "https://upload.wikimedia.org/wikipedia/en/9/93/Horizon_Zero_Dawn.jpg"
+    },
+    {
+        "name": "Battlefield 4",
+        "originalPrice": "35$",
+        "currentPrice": "35$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows"],
+        "background": "https://image.api.playstation.com/cdn/EP0006/CUSA00049_00/yr7mT6NKWN22Mjdl7dH9BTy6KfWS5fFE.png?w=440"
+    },
+    {
+        "name": "Factorio",
+        "originalPrice": "7$",
+        "currentPrice": "7$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows", "Mac"],
+        "background": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000056818/c700b4cc22a81c2099335d83fe379e9cdc6afd190a9985f74ba8f7e589f4ffd2"
+    },
+    {
+        "name": "Battlefield 4",
+        "originalPrice": "35$",
+        "currentPrice": "35$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows"],
+        "background": "https://image.api.playstation.com/cdn/EP0006/CUSA00049_00/yr7mT6NKWN22Mjdl7dH9BTy6KfWS5fFE.png?w=440"
+    },
+    {
+        "name": "Factorio",
+        "originalPrice": "7$",
+        "currentPrice": "7$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows", "Mac"],
+        "background": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000056818/c700b4cc22a81c2099335d83fe379e9cdc6afd190a9985f74ba8f7e589f4ffd2"
+    },
+    {
+        "name": "Battlefield 4",
+        "originalPrice": "35$",
+        "currentPrice": "35$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows"],
+        "background": "https://image.api.playstation.com/cdn/EP0006/CUSA00049_00/yr7mT6NKWN22Mjdl7dH9BTy6KfWS5fFE.png?w=440"
+    },
+    {
+        "name": "Factorio",
+        "originalPrice": "7$",
+        "currentPrice": "7$",
+        "discountPercent": "0%",
+        "description": "lorem ipsum",
+        "platforms": ["Windows", "Mac"],
+        "background": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000056818/c700b4cc22a81c2099335d83fe379e9cdc6afd190a9985f74ba8f7e589f4ffd2"
+    }
+]
