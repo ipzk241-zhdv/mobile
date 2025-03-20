@@ -2,6 +2,7 @@ import { GetIcon, LoadIcons } from "../utils/LoadIcons";
 import styled from "styled-components/native";
 import React from "react";
 import { useTheme } from "styled-components";
+import { View } from "react-native";
 
 const Icons = LoadIcons();
 
@@ -19,6 +20,8 @@ const HeaderTitle = styled.View`
     flex-direction: row;
     align-items: center;
     margin-top: 15px;
+    width: 100%;
+    justify-content: space-between;
 `;
 
 const CaptionText = styled.Text`
@@ -36,8 +39,25 @@ export const HeaderWithoutSearchView: React.FC<HeaderProps> = ({ caption }) => {
     return (
         <HeaderStyles>
             <HeaderTitle>
-                {GetIcon("steam", 36, "none", theme.text)}
-                <CaptionText>{caption}</CaptionText>
+                <View style={{display:"flex", flexDirection:"row"}}>
+                    {GetIcon("steam", 36, "none", theme.text)}
+                    <CaptionText>{caption}</CaptionText>
+                </View>
+            </HeaderTitle>
+        </HeaderStyles>
+    );
+};
+
+export const HeaderWithSearchView: React.FC<HeaderProps> = ({ caption }) => {
+    const theme = useTheme();
+    return (
+        <HeaderStyles>
+            <HeaderTitle>
+                <View style={{display:"flex", flexDirection:"row"}}>
+                    {GetIcon("steam", 36, "none", theme.text)}
+                    <CaptionText>{caption}</CaptionText>
+                </View>
+                {GetIcon("search", 16, "transperant", "transperant")}
             </HeaderTitle>
         </HeaderStyles>
     );

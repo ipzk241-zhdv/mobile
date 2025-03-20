@@ -40,7 +40,7 @@ const FeaturedScroll = styled.ScrollView`
 
 const FeaturedCard = styled.View`
     width: 330px;
-    height: 180px;
+    height: 230px;
     margin-right: 12px;
     border-radius: 16px;
     overflow: hidden;

@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "styled-components";
-import { HeaderWithoutSearchView } from "./Header";
+import { HeaderWithoutSearchView, HeaderWithSearchView } from "./Header";
 import { GetIcon, LoadIcons } from "../utils/LoadIcons";
 
 import ProfileScreen from "../screens/ProfileScreen";
@@ -21,9 +21,7 @@ const MainTabs = ({ toggleTheme, isDarkMode }) => {
             initialRouteName="StoreScreen"
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
-                    return (
-                        GetIcon(route.name, size, color, "transparent")
-                    );
+                    return GetIcon(route.name, size, color, "transparent");
                 },
                 tabBarActiveTintColor: "white",
                 tabBarLabel: () => null,
@@ -36,9 +34,17 @@ const MainTabs = ({ toggleTheme, isDarkMode }) => {
                 header: () => <HeaderWithoutSearchView caption={route.name.replace("Screen", "")} />,
             })}
         >
-            <Tab.Screen name="StoreScreen" component={StoreScreen} />
+            <Tab.Screen
+                name="StoreScreen"
+                component={StoreScreen}
+                options={{ header: () => <HeaderWithSearchView caption="Store"></HeaderWithSearchView> }}
+            />
             <Tab.Screen name="CommunityScreen" component={CommunityScreen} />
-            <Tab.Screen name="ChatScreen" component={ChatScreen} />
+            <Tab.Screen
+                name="ChatScreen"
+                component={ChatScreen}
+                options={{ header: () => <HeaderWithSearchView caption="Chat"></HeaderWithSearchView> }}
+            />
             <Tab.Screen name="SafetyScreen" component={SafetyScreen} />
             <Tab.Screen
                 name="ProfileScreen"

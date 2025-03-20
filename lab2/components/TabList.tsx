@@ -12,7 +12,7 @@ export const TabList = ({tabList}) => {
         setActiveTab(tab);
     };
     return (
-        <Tabs>
+        <Tabs horizontal showsHorizontalScrollIndicator={false}>
             {tabList.map((tab) => (
                 <Tab key={tab} selected={activeTab === tab} onPress={() => handleTabPress(tab)}>
                     <TabText>{tab}</TabText>
@@ -22,15 +22,15 @@ export const TabList = ({tabList}) => {
     );
 };
 
-const Tabs = styled.View`
+const Tabs = styled.ScrollView`
     flex-direction: row;
     margin-bottom: 10px;
 `;
 
 const Tab = styled.TouchableOpacity<{ selected?: boolean }>`
     background-color: ${(props) => (props.selected ? "#2d6cdf" : "#1f2430")};
-    padding: 6px 12px;
-    border-radius: 16px;
+    padding: 12px 18px;
+    border-radius: 12px;
     margin-right: 10px;
 `;
 

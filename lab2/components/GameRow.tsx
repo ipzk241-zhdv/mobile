@@ -32,16 +32,16 @@ export const GameRow = () => {
 const GameRows = styled.View`
     flex-direction: row;
     align-items: center;
-    background-color: #1f2430;
+    background-color: transperant;
     padding: 10px;
     border-radius: 12px;
     margin-bottom: 10px;
 `;
 
 const Cover = styled.Image`
-    width: 50px;
+    width: 72px;
     height: 50px;
-    border-radius: 8px;
+    border-radius: 10px;
 `;
 
 const Info = styled.View`

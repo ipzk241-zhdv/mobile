@@ -7,7 +7,7 @@ import { GameRow } from "../components/GameRow";
 
 const games = require("../assets/games.json");
 
-const Page = () => {
+const StoreScreen = () => {
     return (
         <Container>
             <ScrollView>
@@ -21,7 +21,7 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default StoreScreen;
 
 const Container = styled.View`
     flex: 1;
