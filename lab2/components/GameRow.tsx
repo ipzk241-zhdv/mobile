@@ -32,7 +32,7 @@ export const GameRow = () => {
 const GameRows = styled.View`
     flex-direction: row;
     align-items: center;
-    background-color: transperant;
+    background-color: transparent;
     padding: 10px;
     border-radius: 12px;
     margin-bottom: 10px;

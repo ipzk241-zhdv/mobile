@@ -57,7 +57,7 @@ export const HeaderWithSearchView: React.FC<HeaderProps> = ({ caption }) => {
                     {GetIcon("steam", 36, "none", theme.text)}
                     <CaptionText>{caption}</CaptionText>
                 </View>
-                {GetIcon("search", 16, "transperant", "transperant")}
+                {GetIcon("search", 16, "transparent", "transparent")}
             </HeaderTitle>
         </HeaderStyles>
     );

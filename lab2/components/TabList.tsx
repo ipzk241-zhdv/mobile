@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { useTheme } from "styled-components";
 import { View } from "react-native-reanimated/lib/typescript/Animated";
 import { ImageBackground } from "react-native";
+import { GetIcon } from "../utils/LoadIcons";
 
 export const TabList = ({tabList}) => {
     const theme = useTheme();
-    const [activeTab, setActiveTab] = useState("Top Sellers");
+    const [activeTab, setActiveTab] = useState(tabList[1]);
 
     const handleTabPress = (tab: string) => {
         setActiveTab(tab);
@@ -15,7 +16,8 @@ export const TabList = ({tabList}) => {
         <Tabs horizontal showsHorizontalScrollIndicator={false}>
             {tabList.map((tab) => (
                 <Tab key={tab} selected={activeTab === tab} onPress={() => handleTabPress(tab)}>
-                    <TabText>{tab}</TabText>
+                    {/* якщо іконка з назвою tab існує, підставиться іконка, а інакше просто текст tab */}
+                    <TabText>{GetIcon(tab, 16, "transparent", "transparent") ?? tab}</TabText>
                 </Tab>
             ))}
         </Tabs>
@@ -36,5 +38,5 @@ const Tab = styled.TouchableOpacity<{ selected?: boolean }>`
 
 const TabText = styled.Text`
     color: white;
-    font-size: 12px;
+    font-size: 13px;
 `;
