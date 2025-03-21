@@ -19,12 +19,12 @@ export const SettingsButton = ({ buttonName, onPress }: SettingsButtonProps) => 
 
 const ButtonContainer = styled(TouchableOpacity)`
     background-color: rgb(30,35,50);
-    padding: 16px;
+    padding: 20px;
     border-radius: 12px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 3px;
 `;
 
 const ButtonText = styled.Text`
