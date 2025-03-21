@@ -10,7 +10,7 @@ const HeaderStyles = styled.View`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 25px;
+    padding: 25px 25px 10px 25px;
     margin-top: 0px;
     background-color: ${(props) => props.theme.background};
 `;

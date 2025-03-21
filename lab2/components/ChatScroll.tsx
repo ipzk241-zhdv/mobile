@@ -45,13 +45,12 @@ export const ChatScroll = () => {
 const ChatList = styled.ScrollView`
     margin-bottom: 0px;
     width: 100%;
-    padding-left: 16px;
     background-color: ${(props) => props.theme.background};
 `;
 
 const ChatCard = styled.View`
     height: 72px;
-    width: 95%;
+    width: 100%;
     background-color: #1e1f2b;
     border-radius: 12px;
     flex-direction: row;
