@@ -9,7 +9,7 @@ export default function ChatScreen() {
         <ScrollView>
             <ThemedView>
                 <OptionSelect optionsList={["Open chats", "My friends"]}></OptionSelect>
-                <ChatScroll></ChatScroll>;
+                <ChatScroll></ChatScroll>
             </ThemedView>
         </ScrollView>
     );

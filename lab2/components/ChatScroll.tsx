@@ -1,8 +1,6 @@
 import styled from "styled-components/native";
 import React from "react";
 import { useTheme } from "styled-components";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
-import { ImageBackground } from "react-native";
 
 export const ChatScroll = () => {
     const theme = useTheme();
@@ -19,15 +17,14 @@ export const ChatScroll = () => {
                             {chat.online != "none" && <OnlineIndicator color={chat.online} />}
                         </AvatarWrapper>
                     </AvatarContainer>
-
                     <TextContainer>
                         <ChatName>{chat.name}</ChatName>
                         <ChatMessage>
-                            {(chat.status.sended || chat.status.sendedAndReaded) && <Sender>You: </Sender>}
-                            {chat.lastMessage} <ChatTime>{chat.sendedTime}</ChatTime>
+                            {(chat.status.sended || chat.status.sendedAndReaded) && <Sender>You</Sender>}
+                            {chat.lastMessage}
+                            <ChatTime>{chat.sendedTime}</ChatTime>
                         </ChatMessage>
                     </TextContainer>
-
                     <StatusContainer>
                         {chat.status.sended && <WhiteCircle />}
                         {chat.status.recieved && (

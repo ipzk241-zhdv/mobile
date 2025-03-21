@@ -31,7 +31,7 @@ export const OptionSelect = ({ optionsList, onChange }: TabsProps) => {
 
 const TabsContainer = styled.View`
     flex-direction: row;
-    background-color: #2b2d3a;
+    background-color: rgb(45,50,70);
     border-radius: 12px;
     padding: 4px;
     align-self: center;
@@ -41,7 +41,7 @@ const TabsContainer = styled.View`
 const TabButton = styled.TouchableOpacity<{ active: boolean }>`
     flex: 1;
     padding: 10px 16px;
-    background-color: ${({ active }) => (active ? "#1e1f2b" : "transparent")};
+    background-color: ${({ active }) => (active ? (props) => ((props.theme.background)) : "transparent")};
     border-radius: 10px;
     align-items: center;
     justify-content: center;

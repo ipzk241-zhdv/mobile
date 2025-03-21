@@ -5,12 +5,13 @@ import { GetIcon } from "../utils/LoadIcons";
 
 export default function Feed() {
     const news = require("../assets/news.json");
+
     return (
         <>
-            {news.slice(1).map((item, index) => (
-                <>
+            {news.map((item, index) => (
+                <View key={index}>
                     <Strip></Strip>
-                    <Card key={index}>
+                    <Card>
                         <Header style={{ display: "flex", justifyContent: "space-between" }}>
                             <View style={{ display: "flex", flexDirection: "row" }}>
                                 <Avatar source={{ uri: item.avatar }} />
@@ -41,7 +42,7 @@ export default function Feed() {
                         </Footer>
                     </Card>
                     <Strip></Strip>
-                </>
+                </View>
             ))}
         </>
     );
