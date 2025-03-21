@@ -4,7 +4,6 @@ import { useTheme } from "styled-components";
 import { View } from "react-native-reanimated/lib/typescript/Animated";
 import { ImageBackground } from "react-native";
 
-
 export const FeatureScroll = () => {
     const theme = useTheme();
 
@@ -22,9 +21,11 @@ export const FeatureScroll = () => {
                             <FeaturedTitle>{game.name}</FeaturedTitle>
                             <FeaturedSubtitle>Recommended by your friend, Player</FeaturedSubtitle>
                             <PriceRow>
-                                <DiscountTag>-{game.discountPercent}</DiscountTag>
-                                {game.currentPrice !== game.originalPrice && <Strike>{game.originalPrice}</Strike>}
-                                <NewPrice>{game.currentPrice}</NewPrice>
+                                {game.discountPercent != "0%" && <DiscountTag>-{game.discountPercent}</DiscountTag>}
+                                <Price>
+                                    {game.currentPrice !== game.originalPrice && <Strike>{game.originalPrice}</Strike>}
+                                    <NewPrice>{game.currentPrice}</NewPrice>
+                                </Price>
                             </PriceRow>
                         </FeaturedOverlay>
                     </ImageBackground>
@@ -67,25 +68,35 @@ const FeaturedSubtitle = styled.Text`
 const PriceRow = styled.View`
     flex-direction: row;
     align-items: center;
-    gap: 8px;
     margin-top: 6px;
 `;
 
 const DiscountTag = styled.Text`
-    background-color: transparent;
-    color: #00c851;
+    background-color: rgba(6, 113, 48, 0.5);
+    color: white;
     font-size: 14px;
+    padding: 5px;
     font-weight: bold;
+    border-radius: 5px 0px 0px 5px;
 `;
+
+const Price = styled.View`
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(10, 7, 6, 0.5);
+    border-radius: 0px 5px 5px 0px;
+`
 
 const Strike = styled.Text`
     text-decoration: line-through;
     color: #aaa;
     font-size: 12px;
+    padding: 7px;
 `;
 
 const NewPrice = styled.Text`
     color: white;
     font-size: 14px;
     font-weight: bold;
+    padding: 5px;
 `;

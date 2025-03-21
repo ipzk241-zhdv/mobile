@@ -8,6 +8,8 @@ import SteamIcon from "../assets/icons/steam.svg";
 import ShareIcon from "../assets/icons/share.svg";
 import LikeIcon from "../assets/icons/like.svg";
 import CommentIcon from "../assets/icons/comment.svg";
+import MacIcon from "../assets/icons/mac.svg";
+import WindowsIcon from "../assets/icons/windows.svg";
 import { NumberProp } from "react-native-svg";
 
 export const LoadIcons = () => {
@@ -22,6 +24,8 @@ export const LoadIcons = () => {
         { name: "like", Icon: LikeIcon },
         { name: "comment", Icon: CommentIcon },
         { name: "share", Icon: ShareIcon },
+        { name: "mac", Icon: MacIcon },
+        { name: "windows", Icon: WindowsIcon },
     ];
 };
 

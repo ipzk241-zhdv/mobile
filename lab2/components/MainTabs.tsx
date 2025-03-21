@@ -23,7 +23,7 @@ const MainTabs = ({ toggleTheme, isDarkMode }) => {
                 tabBarIcon: ({ focused, color, size }) => {
                     return GetIcon(route.name, size, color, "transparent");
                 },
-                tabBarActiveTintColor: "white",
+                tabBarActiveTintColor: "lightgray",
                 tabBarLabel: () => null,
                 tabBarStyle: {
                     backgroundColor: theme.tabBar,

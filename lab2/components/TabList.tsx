@@ -30,13 +30,13 @@ const Tabs = styled.ScrollView`
 `;
 
 const Tab = styled.TouchableOpacity<{ selected?: boolean }>`
-    background-color: ${(props) => (props.selected ? "#2d6cdf" : "#1f2430")};
+    background-color: ${(props) => (props.selected ? "#2d6cdf" : props.theme.tabList)};
     padding: 12px 18px;
     border-radius: 12px;
     margin-right: 10px;
 `;
 
 const TabText = styled.Text`
-    color: white;
+    color: ${(props) => ((props.theme.text))};
     font-size: 13px;
 `;

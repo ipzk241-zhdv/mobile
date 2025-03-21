@@ -20,7 +20,7 @@ export const ChatScroll = () => {
                     <TextContainer>
                         <ChatName>{chat.name}</ChatName>
                         <ChatMessage>
-                            {(chat.status.sended || chat.status.sendedAndReaded) && <Sender>You</Sender>}
+                            {(chat.status.sended || chat.status.sendedAndReaded) && <Sender>You: </Sender>}
                             {chat.lastMessage}
                             <ChatTime>{chat.sendedTime}</ChatTime>
                         </ChatMessage>
@@ -48,7 +48,6 @@ const ChatList = styled.ScrollView`
 const ChatCard = styled.View`
     height: 72px;
     width: 100%;
-    background-color: #1e1f2b;
     border-radius: 12px;
     flex-direction: row;
     align-items: center;
@@ -88,7 +87,7 @@ const TextContainer = styled.View`
 `;
 
 const ChatName = styled.Text`
-    color: white;
+    color: ${(props) => ((props.theme.text))};
     font-weight: bold;
     font-size: 16px;
 `;
@@ -100,7 +99,7 @@ const ChatMessage = styled.Text`
 `;
 
 const Sender = styled.Text`
-    color: white;
+    color: ${(props) => ((props.theme.text))};
 `;
 
 const ChatTime = styled.Text`

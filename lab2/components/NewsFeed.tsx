@@ -30,12 +30,12 @@ export default function Feed() {
                             <Topic>{item.topic}</Topic>
                             <Description>{item.description}</Description>
                         </Content>
-                        <Strip height={"1px"} style={{ marginBottom: 14, backgroundColor: "#303649" }}></Strip>
+                        <Strip height={"1px"} style={{ marginBottom: 14 }}></Strip>
                         <Footer>
                             <Activity>
-                                {GetIcon("like", 24, "transparent", "#4B5D6D")}
+                                {GetIcon("like", 24, "transparent", "rgb(160,160,160)")}
                                 <Reaction>{item.likes}</Reaction>
-                                {GetIcon("comment", 24, "#7B8D9D", "transparent")}
+                                {GetIcon("comment", 24, "rgb(160,160,160)", "transparent")}
                                 <Reaction>{item.comments}</Reaction>
                             </Activity>
                             {GetIcon("share", 24, "", "transparent")}
@@ -56,7 +56,7 @@ const Card = styled.View`
 `;
 
 const Strip = styled.View`
-    background-color: #171a24;
+    background-color: ${(props) => ((props.theme.strip))};
     width: 100%;
     height: ${(props) => props.height || "8px"};
 `;
@@ -69,7 +69,7 @@ const Header = styled.View`
 
 const Options = styled.Text`
     font-size: 30px;
-    color: white;
+    color: ${(props) => ((props.theme.text))};
 `;
 
 const Activity = styled.View`
@@ -81,9 +81,9 @@ const News = styled.Text`
     text-transform: uppercase;
     background-color: rgb(182, 62, 181);
     color: white;
-    padding: 2px 5px;
+    padding: 1px 5px;
     border-radius: 4px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 `;
 
 const Avatar = styled.Image`
@@ -94,7 +94,7 @@ const Avatar = styled.Image`
 `;
 
 const Author = styled.Text`
-    color: #ffffff;
+    color: ${(props) => ((props.theme.text))};
     font-weight: bold;
 `;
 
@@ -115,7 +115,7 @@ const Content = styled.View`
 `;
 
 const Topic = styled.Text`
-    color: #ffffff;
+    color: ${(props) => ((props.theme.text))};
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;

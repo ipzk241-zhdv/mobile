@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useTheme } from "styled-components";
 import { View } from "react-native-reanimated/lib/typescript/Animated";
 import { ImageBackground } from "react-native";
+import { GetIcon } from "../utils/LoadIcons";
 
 export const GameRow = () => {
     const theme = useTheme();
@@ -16,7 +17,11 @@ export const GameRow = () => {
                 <Cover source={{ uri: game.background }} />
                 <Info>
                     <GameTitle>{game.name}</GameTitle>
-                    <Platforms>{game.platforms.join(", ")}</Platforms>
+                    <PlatformsContainer>
+                        {game.platforms.includes("Windows") && GetIcon("windows", 12)}
+                        {game.platforms.includes("Mac") && GetIcon("mac", 12)}
+                        <Platforms>{game.platforms.join(", ")}</Platforms>
+                    </PlatformsContainer>
                 </Info>
                 <PriceBlock>
                     {game.currentPrice !== game.originalPrice && <Strike>{game.originalPrice}</Strike>}
@@ -38,6 +43,14 @@ const GameRows = styled.View`
     margin-bottom: 10px;
 `;
 
+const PlatformsContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    gap: 5px;
+`
+
 const Cover = styled.Image`
     width: 72px;
     height: 50px;
@@ -50,7 +63,7 @@ const Info = styled.View`
 `;
 
 const GameTitle = styled.Text`
-    color: white;
+    color: ${(props) => ((props.theme.text))};
     font-size: 14px;
     font-weight: bold;
 `;
@@ -71,7 +84,7 @@ const Strike = styled.Text`
 `;
 
 const NewPrice = styled.Text`
-    color: white;
+    color: ${(props) => ((props.theme.text))};
     font-size: 14px;
     font-weight: bold;
 `;

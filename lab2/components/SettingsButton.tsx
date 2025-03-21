@@ -18,7 +18,7 @@ export const SettingsButton = ({ buttonName, onPress }: SettingsButtonProps) => 
 };
 
 const ButtonContainer = styled(TouchableOpacity)`
-    background-color: rgb(30,35,50);
+    background-color: ${(props) => ((props.theme.strip))};
     padding: 20px;
     border-radius: 12px;
     flex-direction: row;

@@ -24,6 +24,7 @@ export default function SafetyScreen() {
 const RegularText = styled.Text`
     color: ${(props) => ((props.theme.text))};
     line-height: 20px;
+    margin-top: 20px;
 `
 
 const BlueText = styled.Text`

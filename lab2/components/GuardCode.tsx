@@ -72,9 +72,7 @@ const ImageBack = styled.ImageBackground`
     position: relative;
     background-color: red;
     `;
-    // background-color: ${(props) => ((props.theme.background))}
 
-/* Vertical gradient - fades at top and bottom */
 const GradientOverlayVertical = styled(LinearGradient).attrs({
     colors: ["rgba(27, 31, 42, 1)", "rgba(27, 31, 42, 0)"],
     start: { x: 0.5, y: 0 },
@@ -85,7 +83,6 @@ const GradientOverlayVertical = styled(LinearGradient).attrs({
     height: 100%;
 `;
 
-/* Horizontal gradient - fades at left and right */
 const GradientOverlayHorizontal = styled(LinearGradient).attrs({
     colors: ["rgba(27, 31, 42, 1)", "rgba(27, 31, 42, 0)", "rgba(27, 31, 42, 1)"],
     start: { x: 0, y: 0.5 },
