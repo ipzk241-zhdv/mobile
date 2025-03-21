@@ -1,0 +1,210 @@
+[
+    {
+        "name": "Mark Dyson",
+        "online": "green",
+        "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+        "lastMessage": "I'm already starting to play",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": false,
+            "recieved": true,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Bresh",
+        "online": "none",
+        "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+        "lastMessage": "I'm already starting to play",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": false,
+            "recieved": true,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Mark Dyson",
+        "online": "green",
+        "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+        "lastMessage": "Ok",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": true,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player123",
+        "online": "rgb(45,185,250)",
+        "avatar": "https://images.dwncdn.net/images/t_app-icon-l/p/e8326516-9b2c-11e6-9634-00163ec9f5fa/2059490507/rust-logo",
+        "lastMessage": "Ok",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": true,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player123",
+        "online": "rgb(45,185,250)",
+        "avatar": "https://images.dwncdn.net/images/t_app-icon-l/p/e8326516-9b2c-11e6-9634-00163ec9f5fa/2059490507/rust-logo",
+        "lastMessage": "Ok",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": true,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player",
+        "online": "none",
+        "avatar": "https://a0.anyrgb.com/pngimg/1824/1914/question-icon-roblox-corporation-roblox-question-mark-question-mark-avatar-svg-monochrome-icons.png",
+        "lastMessage": "Hello!",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player",
+        "online": "none",
+        "avatar": "https://a0.anyrgb.com/pngimg/1824/1914/question-icon-roblox-corporation-roblox-question-mark-question-mark-avatar-svg-monochrome-icons.png",
+        "lastMessage": "Hello!",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Expresso",
+        "online": "green",
+        "avatar": "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-59554682a1f2e-3889-8df1ace0d81d030a9daf65b6c71e61b4@1x.jpg",
+        "lastMessage": "Ok",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Expresso",
+        "online": "none",
+        "avatar": "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-59554682a1f2e-3889-8df1ace0d81d030a9daf65b6c71e61b4@1x.jpg",
+        "lastMessage": "Ok",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Mark Dyson",
+        "online": "none",
+        "avatar": "https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg",
+        "lastMessage": "Ok",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": true,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player123",
+        "online": "none",
+        "avatar": "https://images.dwncdn.net/images/t_app-icon-l/p/e8326516-9b2c-11e6-9634-00163ec9f5fa/2059490507/rust-logo",
+        "lastMessage": "Ok",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": true,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player123",
+        "online": "none",
+        "avatar": "https://images.dwncdn.net/images/t_app-icon-l/p/e8326516-9b2c-11e6-9634-00163ec9f5fa/2059490507/rust-logo",
+        "lastMessage": "Ok",
+        "sendedTime": "· 14 jun",
+        "status": {
+            "sended": false,
+            "sendedAndReaded": true,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player",
+        "online": "none",
+        "avatar": "https://a0.anyrgb.com/pngimg/1824/1914/question-icon-roblox-corporation-roblox-question-mark-question-mark-avatar-svg-monochrome-icons.png",
+        "lastMessage": "Hello!",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Player",
+        "online": "none",
+        "avatar": "https://a0.anyrgb.com/pngimg/1824/1914/question-icon-roblox-corporation-roblox-question-mark-question-mark-avatar-svg-monochrome-icons.png",
+        "lastMessage": "Hello!",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Expresso",
+        "online": "none",
+        "avatar": "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-59554682a1f2e-3889-8df1ace0d81d030a9daf65b6c71e61b4@1x.jpg",
+        "lastMessage": "Ok",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    },
+    {
+        "name": "Expresso",
+        "online": "none",
+        "avatar": "https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/alt-59554682a1f2e-3889-8df1ace0d81d030a9daf65b6c71e61b4@1x.jpg",
+        "lastMessage": "Ok",
+        "sendedTime": "· 12 jun",
+        "status": {
+            "sended": true,
+            "sendedAndReaded": false,
+            "recieved": false,
+            "recievedAndReaded": false
+        }
+    }
+]
