@@ -1,10 +1,7 @@
 import styled from "styled-components/native";
 import React from "react";
-import { useTheme } from "styled-components";
 
 export const ChatScroll = () => {
-    const theme = useTheme();
-
     const chats = require("../assets/chats.json");
 
     return (

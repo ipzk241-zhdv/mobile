@@ -6,8 +6,6 @@ import { TabList } from "../components/TabList";
 import { GameRow } from "../components/GameRow";
 import ThemedView from "../components/ThemedView";
 
-const games = require("../assets/games.json");
-
 const StoreScreen = () => {
     return (
         <ThemedView>
@@ -23,9 +21,3 @@ const StoreScreen = () => {
 };
 
 export default StoreScreen;
-
-const Container = styled.View`
-    flex: 1;
-    background-color: #121829;
-    padding: 20px;
-`;

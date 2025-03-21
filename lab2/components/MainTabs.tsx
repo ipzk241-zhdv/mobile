@@ -11,11 +11,9 @@ import CommunityScreen from "../screens/CommunityScreen";
 import StoreScreen from "../screens/StoreScreen";
 
 const Tab = createBottomTabNavigator();
-const Icons = LoadIcons();
 
 const MainTabs = ({ toggleTheme, isDarkMode }) => {
     const theme = useTheme();
-    console.log(theme);
     return (
         <Tab.Navigator
             initialRouteName="StoreScreen"

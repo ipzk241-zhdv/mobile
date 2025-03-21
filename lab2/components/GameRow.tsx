@@ -1,13 +1,8 @@
 import styled from "styled-components/native";
 import React, { useState } from "react";
-import { useTheme } from "styled-components";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
-import { ImageBackground } from "react-native";
 import { GetIcon } from "../utils/LoadIcons";
 
 export const GameRow = () => {
-    const theme = useTheme();
-
     const games = require("../assets/games.json");
 
     return (

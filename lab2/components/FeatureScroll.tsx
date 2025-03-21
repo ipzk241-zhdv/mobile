@@ -1,12 +1,8 @@
 import styled from "styled-components/native";
 import React from "react";
-import { useTheme } from "styled-components";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
 import { ImageBackground } from "react-native";
 
 export const FeatureScroll = () => {
-    const theme = useTheme();
-
     const games = require("../assets/games.json");
 
     return (
