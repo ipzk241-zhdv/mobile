@@ -21,29 +21,52 @@ const MainScreen = ({ navigation }) => {
 
     const addPoints = (points, taskId) => {
         setScore((prev) => prev + points);
-        updateProgress(taskId, score + points);
+        updateProgress(taskId);
     };
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <Container>
                 <ScoreText>Score: {score}</ScoreText>
+
                 <PinchGestureHandler onGestureEvent={Animated.event([{ nativeEvent: { scale } }], { useNativeDriver: false })}>
                     <PanGestureHandler
                         onGestureEvent={Animated.event([{ nativeEvent: { translationX: translateX, translationY: translateY } }], {
                             useNativeDriver: false,
                         })}
                     >
-                        <FlingGestureHandler direction={4} onHandlerStateChange={() => addPoints(Math.floor(Math.random() * 5) + 1, "flick")}>
+                        <FlingGestureHandler
+                            direction={4}
+                            onHandlerStateChange={({ nativeEvent }) => {
+                                if (nativeEvent.state === State.ACTIVE) addPoints(Math.floor(Math.random() * 5) + 1, "flick");
+                            }}
+                        >
                             <LongPressGestureHandler
                                 onHandlerStateChange={({ nativeEvent }) => {
                                     if (nativeEvent.state === State.ACTIVE) addPoints(5, "longpress");
                                 }}
                                 minDurationMs={500}
+                                shouldCancelWhenOutside={true}
                             >
-                                <TapGestureHandler onHandlerStateChange={() => addPoints(1, "tenclicks")} numberOfTaps={1}>
-                                    <TapGestureHandler onHandlerStateChange={() => addPoints(2, "doubletap")} numberOfTaps={2}>
-                                        <ButtonStyled style={{ transform: [{ scale }, { translateX }, { translateY }] }}>
+                                <TapGestureHandler
+                                    numberOfTaps={1}
+                                    onHandlerStateChange={({ nativeEvent }) => {
+                                        if (nativeEvent.state === State.ACTIVE) addPoints(1, "tenclicks");
+                                    }}
+                                    waitFor={["doubleTap", "longPress"]}
+                                >
+                                    <TapGestureHandler
+                                        numberOfTaps={2}
+                                        onHandlerStateChange={({ nativeEvent }) => {
+                                            if (nativeEvent.state === State.ACTIVE) addPoints(2, "doubletap");
+                                        }}
+                                        waitFor="longPress"
+                                        ref={(ref) => (this.doubleTap = ref)}
+                                    >
+                                        <ButtonStyled
+                                            style={{ transform: [{ scale }, { translateX }, { translateY }] }}
+                                            ref={(ref) => (this.longPress = ref)}
+                                        >
                                             <ButtonText>Click Me!</ButtonText>
                                         </ButtonStyled>
                                     </TapGestureHandler>

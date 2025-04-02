@@ -9,12 +9,14 @@ export default function GoalsScreen() {
 
     const renderItem = ({ item, index }) => {
         const id = Object.keys(goalsData)[index];
+        const hasProgressbar = goalsData[id]?.progressbar !== undefined;
+
         return (
             <TaskButton
                 title={item.title}
                 subtitle={item.subtitle}
-                isChecked={progress[id] >= (goalsData[id]?.progressbar || 100)}
-                progress={(progress[id] / (goalsData[id]?.progressbar || 100)) * 100}
+                isChecked={progress[id] >= (goalsData[id].progressbar || 100)}
+                progress={hasProgressbar ? (progress[id] / goalsData[id].progressbar) * 100 : undefined}
             />
         );
     };

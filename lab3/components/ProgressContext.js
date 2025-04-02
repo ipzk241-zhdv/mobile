@@ -13,16 +13,15 @@ export const ProgressProvider = ({ children }) => {
         }, {})
     );
 
-    const updateProgress = (id, value) => {
-        setProgress((prev) => ({
-            ...prev,
-            [id]: Math.min(value, goalsData[id]?.progressbar || 100),
-        }));
+    const updateProgress = (id) => {
+        setProgress((prev) => {
+            const isCompleted = goalsData[id]?.progressbar === undefined;
+            return {
+                ...prev,
+                [id]: isCompleted ? 100 : Math.min(prev[id] + 1, goalsData[id]?.progressbar || 100),
+            };
+        });
     };
 
-    return (
-        <ProgressContext.Provider value={{ progress, updateProgress }}>
-            {children}
-        </ProgressContext.Provider>
-    );
+    return <ProgressContext.Provider value={{ progress, updateProgress }}>{children}</ProgressContext.Provider>;
 };
