@@ -1,5 +1,0 @@
-{
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base",
-  "include": ["**/*.ts", "**/*.tsx", "declarations.d.ts", "App.js", "screens/SettingsScreen.js", "components/Header.tsx", "screens/GoalsScreen.js", "screens/MainScreen.js", "components/ProgressContext.js", "components/MainTabs.js"]
-}

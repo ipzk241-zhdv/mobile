@@ -13,6 +13,7 @@ export default function GoalsScreen() {
 
         return (
             <TaskButton
+                goalKey={id}
                 title={item.title}
                 subtitle={item.subtitle}
                 isChecked={progress[id] >= (goalsData[id].progressbar || 100)}

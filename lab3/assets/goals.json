@@ -13,8 +13,24 @@
         "title": "Long press 3 seconds",
         "subtitle": "Hold the clicker for 3 seconds"
     },
-    "test": {
-        "title": "test press 3 seconds",
-        "subtitle": "test the clicker for 3 seconds"
+    "drag": {
+        "title": "Drag the object",
+        "subtitle": "Drag the clicker around the screen"
+    },
+    "swiperight": {
+        "title": "Swipe right",
+        "subtitle": "Perform a quick swipe right gesture"
+    },
+    "swipeleft": {
+        "title": "Swipe left",
+        "subtitle": "Perform a quick swipe left gesture"
+    },
+    "pinch": {
+        "title": "Pinch to resize",
+        "subtitle": "Use pinch gesture to resize the clicker"
+    },
+    "score100": {
+        "title": "Reach 100 points",
+        "subtitle": "Perform different gestures to gain 100 score points"
     }
 }
