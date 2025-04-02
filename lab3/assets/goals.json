@@ -1,0 +1,16 @@
+{
+    "tenclicks": {
+        "title": "Tap 10 times",
+        "subtitle": "Tap on clicker object 10 times",
+        "progressbar": 10
+    },
+    "doubletap": {
+        "title": "Double-tap 5 times",
+        "subtitle": "Double-tap on clicker 5 times",
+        "progressbar": 10
+    },
+    "longpress": {
+        "title": "Long press 3 seconds",
+        "subtitle": "Hold the clicker for 3 seconds"
+    }
+}
