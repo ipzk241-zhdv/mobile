@@ -2,10 +2,13 @@ import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import MainTabs from "./components/MainTabs";
 import { OneSignal } from "react-native-onesignal";
+import Constants from "expo-constants";
+
+const appId = Constants.expoConfig.extra.ONESIGNAL_APP_ID;
 
 const App = () => {
     useEffect(() => {
-        OneSignal.initialize("9a4beaf7-ca73-44b6-a4e9-c3dfdb1e28f4");
+        OneSignal.initialize(appId);
         OneSignal.Debug.setLogLevel(6); // Verbose
 
         OneSignal.User.pushSubscription.optIn();

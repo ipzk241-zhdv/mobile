@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 import { Trash2, CheckCircle, Circle } from "lucide-react-native";
 import { TouchableOpacity } from "react-native";
 
-export const ReminderCard = ({ caption, description, datetime }) => {
+export const ReminderCard = ({ caption, description, datetime, onDelete }) => {
     const [completed, setCompleted] = useState(false);
 
     return (
@@ -16,7 +16,7 @@ export const ReminderCard = ({ caption, description, datetime }) => {
                 <Description>{description}</Description>
                 <Datetime>{datetime}</Datetime>
             </Content>
-            <DeleteButton>
+            <DeleteButton onPress={onDelete}>
                 <Trash2 color="white" size={20} />
             </DeleteButton>
         </Card>
