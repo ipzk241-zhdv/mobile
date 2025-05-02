@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
 import styled from "styled-components/native";
+import * as FileSystem from "expo-file-system";
 
 interface Props {
     visible: boolean;
@@ -56,19 +57,26 @@ const ActionModal: React.FC<Props> = ({ visible, onClose, createEntry, deleteSel
             } else {
                 const extMatch = name.match(/\.([^.]+)$/);
                 const ext = extMatch ? extMatch[1].toLowerCase() : "";
-                if (ext === "txt") type = "Text file";
-                else if (["img", "bmp", "png"].includes(ext)) type = "Image file";
-                else if (ext === "mp3") type = "Audio file";
-                else if (ext) type = `${ext.toUpperCase()} file`;
-                else type = "Without extension";
+                if (ext === "txt") {
+                    type = "Text file";
+                } else if (["img", "bmp", "png"].includes(ext)) {
+                    type = "Image file";
+                } else if (ext === "mp3") {
+                    type = "Audio file";
+                } else if (ext) {
+                    type = `${ext.toUpperCase()} file`;
+                } else {
+                    type = "Without extension";
+                }
             }
 
             const size = info.size ?? 0;
             const mtime = info.modificationTime ? new Date(info.modificationTime * 1000).toLocaleString() : "Unknown";
             const message = `Name: ${name}\nType: ${type}\nSize: ${size} byte\nLast edit: ${mtime}`;
-            Alert.alert("Information", message, [{ text: "OK" }]);
-        } catch {
-            Alert.alert("Error", "Failed to retrieve info.");
+            Alert.alert("Інформація", message, [{ text: "OK" }]);
+        } catch (error) {
+            console.error("showInfo error", error);
+            Alert.alert("Error", "Failed to recieve detailed info.");
         }
     };
 

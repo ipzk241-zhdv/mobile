@@ -1,7 +1,7 @@
 ### 1. Встановлення залежностей
-
-- **Node.js** та `npm`
+- **Node.js**
 - **Expo CLI**
+- Встановіть залежності через `npm install`
 
 - **Java Development Kit (JDK)**: 
 - 21.х.х версії
@@ -11,17 +11,20 @@
 Встановлюється разом із Android Studio. Після встановлення:
 - Перевірте, що `ANDROID_HOME` прописаний у змінних середовища
 
-### 3. Створення .env
-- Використовуючи **exampleEnv**, створіть власний .env файл у корені проєкту
-
-### 4. Запуск емулятора
-
+### 2. Запуск емулятора (опціонально)
 - Відкрийте **Android Studio**.
 - Увімкніть віртуальний пристрій у **Device Manager**.
 
-### 5. Запуск додатку
-У корені проєкту запустіть: `npx expo run:android`, це збере додаток і запустить його на емуляторі
+### 3. Запуск додатку
+У корені проєкту запустіть: `npx expo start`. Після ви можете відкрити додаток на власному телефону через Expo Go зчитавши QR код, або відкрити додаток на емуляторі клавішою А
 
-![alt text](./screenshots/1.png)
-![alt text](./screenshots/2.png)
-![alt text](./screenshots/3.png)
+## Демо відео:
+[![Демо](media/preview.png)](./screenshots/demo.mp4)
+
+## Скріншоти
+![alt text](./screenshots/homescreen.png)
+![alt text](./screenshots/folders.png)
+![alt text](./screenshots/foldersModal.png)
+![alt text](./screenshots/info.png)
+![alt text](./screenshots/createFile.png)
+![alt text](./screenshots/Editor.png)
