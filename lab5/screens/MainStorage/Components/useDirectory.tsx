@@ -58,51 +58,25 @@ export const useDirectory = () => {
         }
     };
 
-    const createEntry = async (isFolder: boolean) => {
+    const createEntry = async (isFolder: boolean, name: string, content: string = "") => {
         const fullDir = resolvePath(currentPath);
-        const defaultName = isFolder ? "NewFolder" : "file.txt";
-
-        let existing: string[] = [];
-        try {
-            existing = await FileSystem.readDirectoryAsync(fullDir);
-        } catch {
-            existing = [];
-        }
-
-        let base: string;
-        let ext: string;
-        if (isFolder) {
-            base = defaultName;
-            ext = "";
-        } else {
-            const idx = defaultName.lastIndexOf(".");
-            if (idx !== -1) {
-                base = defaultName.substring(0, idx);
-                ext = defaultName.substring(idx);
-            } else {
-                base = defaultName;
-                ext = "";
-            }
-        }
-
-        let uniqueName = defaultName;
+        const existing = await FileSystem.readDirectoryAsync(fullDir).catch(() => []);
+        let unique = name;
         let counter = 1;
-        while (existing.includes(uniqueName)) {
-            uniqueName = `${base}(${counter})${ext}`;
+        while (existing.includes(unique)) {
+            unique = name.replace(/(\(\d+\))?$/, `(${counter})`);
             counter++;
         }
-
-        const newUri = decodeURIComponent(`${fullDir}/${uniqueName}`.replace(/\/\//g, "/"));
+        const uri = `${fullDir}/${unique}`.replace(/\/\//g, "/");
 
         try {
             if (isFolder) {
-                await FileSystem.makeDirectoryAsync(newUri, { intermediates: true });
+                await FileSystem.makeDirectoryAsync(uri, { intermediates: true });
             } else {
-                await FileSystem.writeAsStringAsync(newUri, "");
+                await FileSystem.writeAsStringAsync(uri, content);
             }
             await loadDirectory(currentPath);
-        } catch (error) {
-            console.error("createEntry error", error);
+        } catch {
             Alert.alert("Error", `Failed to create ${isFolder ? "folder" : "file"}`);
         }
     };
