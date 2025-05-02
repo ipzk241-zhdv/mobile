@@ -19,7 +19,7 @@
 У корені проєкту запустіть: `npx expo start`. Після ви можете відкрити додаток на власному телефону через Expo Go зчитавши QR код, або відкрити додаток на емуляторі клавішою А
 
 ## Демо відео:
-[![Демо](media/preview.png)](./screenshots/demo.mp4)
+[![Демо](media/preview.png)](https://drive.google.com/file/d/1P05wDOWuA303wXCz2mTSSv-s0vDsuT_h/view?usp=sharing)
 
 ## Скріншоти
 ![alt text](./screenshots/homescreen.png)
