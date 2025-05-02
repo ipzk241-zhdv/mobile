@@ -24,7 +24,7 @@ const Breadcrumb: React.FC<Props> = ({ isEditing, pathInput, onChangeInput, onSu
             ) : (
                 <PathRow>
                     {fullPath.map((name, index) => (
-                        <TouchableOpacity key={index} onPress={() => onBreadcrumbPress("AppData/" + fullPath.slice(1, index + 1).join("/"))}>
+                        <TouchableOpacity key={index} onPress={() => onBreadcrumbPress(fullPath.slice(1, index + 1).join("/"))}>
                             <PathSegment>{name} / </PathSegment>
                         </TouchableOpacity>
                     ))}

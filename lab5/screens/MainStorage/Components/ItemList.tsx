@@ -28,7 +28,7 @@ const ItemList: React.FC<Props> = ({ item, selectedItems, setSelectedItems, onOp
         <ItemContainer>
             <ItemTouchable onPress={handlePress}>
                 <ItemRow>
-                    {item.isDirectory ? <Folder size={20} /> : <File size={20} />}
+                    {item.isDirectory ? <Folder color="#000" size={20} /> : <File color="#000" size={20} />}
                     <ItemName>{item.uri.split("/").pop()}</ItemName>
                 </ItemRow>
             </ItemTouchable>
