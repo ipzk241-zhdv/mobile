@@ -48,13 +48,13 @@ export const useDirectory = () => {
         try {
             const info = await FileSystem.getInfoAsync(fullPath);
             if (!info.exists) {
-                Alert.alert("Помилка", "Шлях не знайдено");
+                Alert.alert("Error", "Path not found.");
                 return;
             }
             setCurrentPath(newPath);
         } catch (error) {
             console.error("goToPath error", error);
-            Alert.alert("Помилка", "Не вдалось перевірити шлях");
+            Alert.alert("Error", "Failed to check path.");
         }
     };
 
@@ -103,7 +103,7 @@ export const useDirectory = () => {
             await loadDirectory(currentPath);
         } catch (error) {
             console.error("createEntry error", error);
-            Alert.alert("Помилка", `Не вдалось створити ${isFolder ? "папку" : "файл"}`);
+            Alert.alert("Error", `Failed to create ${isFolder ? "folder" : "file"}`);
         }
     };
 
@@ -128,7 +128,7 @@ export const useDirectory = () => {
             setSelectedItems(new Set());
         } catch (error) {
             console.error("renameItem error", error);
-            Alert.alert("Помилка", "Не вдалося перейменувати.");
+            Alert.alert("Error", "Failed to rename.");
         }
     };
 

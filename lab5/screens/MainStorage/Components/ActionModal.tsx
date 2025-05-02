@@ -52,11 +52,11 @@ const ActionModal: React.FC<Props> = ({ visible, onClose, createEntry, deleteSel
 
             const size = info.size ?? 0;
             const mtime = info.modificationTime ? new Date(info.modificationTime * 1000).toLocaleString() : "Unknown";
-            const message = `Назва: ${name}\nТип: ${type}\nРозмір: ${size} байт\nОстаннє змінення: ${mtime}`;
+            const message = `Name: ${name}\nType: ${type}\nSize: ${size} byte\nLast edit: ${mtime}`;
             Alert.alert("Інформація", message, [{ text: "OK" }]);
         } catch (error) {
             console.error("showInfo error", error);
-            Alert.alert("Помилка", "Не вдалося отримати інформацію");
+            Alert.alert("Error", "Failed to recieve detailed info.");
         }
     };
 
@@ -75,7 +75,7 @@ const ActionModal: React.FC<Props> = ({ visible, onClose, createEntry, deleteSel
                                 onClose();
                             }}
                         >
-                            <ActionText>Створити папку</ActionText>
+                            <ActionText>Create folder</ActionText>
                         </ActionButton>
                         <ActionButton
                             onPress={() => {
@@ -83,17 +83,17 @@ const ActionModal: React.FC<Props> = ({ visible, onClose, createEntry, deleteSel
                                 onClose();
                             }}
                         >
-                            <ActionText>Створити файл</ActionText>
+                            <ActionText>Create file</ActionText>
                         </ActionButton>
 
                         {selectedItems.size === 1 && (
                             <>
                                 <Input value={renameInput} onChangeText={setRenameInput} placeholder="Нове ім’я" autoFocus />
                                 <ActionButton onPress={handleRename}>
-                                    <ActionText>Перейменувати</ActionText>
+                                    <ActionText>Rename</ActionText>
                                 </ActionButton>
                                 <ActionButton onPress={showInfo}>
-                                    <ActionText>Інформація</ActionText>
+                                    <ActionText>Info</ActionText>
                                 </ActionButton>
                             </>
                         )}
@@ -101,10 +101,10 @@ const ActionModal: React.FC<Props> = ({ visible, onClose, createEntry, deleteSel
                         {selectedItems.size > 0 && (
                             <ActionButton
                                 onPress={() => {
-                                    Alert.alert("Видалити", "Ви впевнені?", [
-                                        { text: "Скасувати", style: "cancel" },
+                                    Alert.alert("Delete", "Are you sure to delete?", [
+                                        { text: "Cancel", style: "cancel" },
                                         {
-                                            text: "Видалити",
+                                            text: "Delete",
                                             style: "destructive",
                                             onPress: () => {
                                                 deleteSelected();
@@ -114,7 +114,7 @@ const ActionModal: React.FC<Props> = ({ visible, onClose, createEntry, deleteSel
                                     ]);
                                 }}
                             >
-                                <ActionText style={{ color: "red" }}>Видалити</ActionText>
+                                <ActionText style={{ color: "red" }}>Delete</ActionText>
                             </ActionButton>
                         )}
                     </Content>

@@ -3,13 +3,15 @@ import { View, FlatList, Alert, Modal } from "react-native";
 import { Pencil, EllipsisVertical } from "lucide-react-native";
 import { Text } from "react-native";
 import styled from "styled-components/native";
-
+import { useNavigation } from "@react-navigation/native";
 import { useDirectory } from "./Components/useDirectory";
 import Breadcrumb from "./Components/Breadcrumb";
 import ItemList from "./Components/ItemList";
 import ActionModal from "./Components/ActionModal";
 
 const MainStorageScreen: React.FC = () => {
+    const navigation = useNavigation();
+
     const {
         items,
         currentPath,
@@ -71,7 +73,12 @@ const MainStorageScreen: React.FC = () => {
                             if (item.isDirectory) {
                                 setCurrentPath(item.uri);
                             } else {
-                                readFileAsync(item.uri);
+                                const parts = item.uri.split("/");
+                                const name = parts[parts.length - 1];
+                                navigation.navigate("TextEditor", {
+                                  uri: item.uri,
+                                  caption: name,
+                                });
                             }
                         }}
                     />
