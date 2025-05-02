@@ -3,7 +3,7 @@ import { View, Text, FlatList, Alert, ActivityIndicator } from "react-native";
 import styled from "styled-components/native";
 import * as FileSystem from "expo-file-system";
 import { Smartphone, HardDrive, Download, FileSliders, Trash, Image, Video } from "lucide-react-native";
-import { StorageButton } from "../components/StorageButton";
+import { StorageButton } from "./components/StorageButton";
 import { useNavigation } from "@react-navigation/native";
 
 const localButtons = [
