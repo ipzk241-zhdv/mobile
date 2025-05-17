@@ -17,14 +17,25 @@ const LoginScreen = ({ navigation }) => {
 
     const handleLogin = async () => {
         setLoading(true);
-        signInWithEmailAndPassword(authentication, email, password)
-            .then((res) => {
-                setLoggedInUser(res.user);
-            })
-            .catch((err) => {
-                setError("Невірний Email або пароль");
-            })
-            .finally(() => setLoading(false));
+
+        try {
+            const res = await signInWithEmailAndPassword(authentication, email, password);
+            const user = res.user;
+
+            if (!user.emailVerified) {
+                Alert.alert("Email не підтверджено", "Перевірте свою пошту та підтвердьте аккаунт перед входом");
+                await signOut(authentication);
+
+                setLoggedInUser(null);
+                return;
+            }
+
+            setLoggedInUser(user);
+        } catch (err) {
+            console.log("Login error:", err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (

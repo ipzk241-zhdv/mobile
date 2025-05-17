@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { TextInput, ActivityIndicator } from "react-native";
+import { TextInput, ActivityIndicator, Alert } from "react-native";
 import styled from "styled-components/native";
-import { authentication } from "../../firebase/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { authentication, db } from "../../firebase/config";
+import { createUserWithEmailAndPassword, sendEmailVerification, signOut } from "firebase/auth";
 import { useAuth } from "../../contexts/AuthContext";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const SignUpScreen = ({ navigation }) => {
 
     const { setLoggedInUser } = useAuth();
 
-    const handleSignUp = () => {
+    const handleSignUp = async () => {
         setError("");
         if (password !== confirmPassword) {
             setError("Паролі не співпадають");
@@ -22,15 +23,30 @@ const SignUpScreen = ({ navigation }) => {
         }
 
         setLoading(true);
-        createUserWithEmailAndPassword(authentication, email, password)
-            .then((res) => {
-                setLoggedInUser(res.user);
-            })
-            .catch((e) => {
-                console.log(e);
-                setError("Помилка реєстрації. Спробуйте ще раз");
-            })
-            .finally(() => setLoading(false));
+
+        try {
+            const res = await createUserWithEmailAndPassword(authentication, email, password);
+            const user = res.user;
+
+            await sendEmailVerification(user);
+
+            await setDoc(doc(db, "users", user.uid), {
+                uid: user.uid,
+                email: user.email,
+                role: "user",
+                createdAt: new Date(),
+            });
+
+            Alert.alert("Підтвердьте пошту", "Ми надіслали лист на вашу пошту. Підтвердьте її, перш ніж входити в систему.", [
+                { text: "OK", onPress: () => navigation.replace("Login") },
+            ]);
+
+            await signOut(authentication);
+        } catch (err) {
+            console.log("Sign up error:", err);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
