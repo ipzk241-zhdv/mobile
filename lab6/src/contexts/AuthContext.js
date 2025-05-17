@@ -10,8 +10,17 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(authentication, (user) => {
-            console.log("onAuthStateChanged:", user.email);
-            setLoggedInUser(user);
+            if (user) {
+                console.log("onAuthStateChanged:", user.email, "verified:", user.emailVerified);
+                if (user.emailVerified) {
+                    setLoggedInUser(user);
+                } else {
+                    setLoggedInUser(null);
+                }
+            } else {
+                setLoggedInUser(null);
+            }
+
             setLoading(false);
         });
 

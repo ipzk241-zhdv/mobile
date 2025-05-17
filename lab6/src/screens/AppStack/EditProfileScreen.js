@@ -55,6 +55,12 @@ const EditProfileScreen = () => {
             return;
         }
 
+        const age = Number(yearsOld);
+        if (isNaN(age) || age < 1 || age > 150) {
+            Alert.alert("Помилка", "Вік має бути числом від 1 до 150.");
+            return;
+        }
+
         try {
             const ref = doc(db, "users", loggedInUser.uid);
             await updateDoc(ref, {
@@ -71,38 +77,22 @@ const EditProfileScreen = () => {
         }
     };
 
-    if (loading) return <Centered><LoadingText>Завантаження...</LoadingText></Centered>;
+    if (loading)
+        return (
+            <Centered>
+                <LoadingText>Завантаження...</LoadingText>
+            </Centered>
+        );
 
     return (
         <Container>
             <Title>Редагування профілю</Title>
 
-            <Input
-                placeholder="Ім'я"
-                value={form.name}
-                onChangeText={(text) => handleChange("name", text)}
-            />
-            <Input
-                placeholder="Прізвище"
-                value={form.lastname}
-                onChangeText={(text) => handleChange("lastname", text)}
-            />
-            <Input
-                placeholder="Місто"
-                value={form.city}
-                onChangeText={(text) => handleChange("city", text)}
-            />
-            <Input
-                placeholder="Вік"
-                value={form.yearsOld}
-                keyboardType="numeric"
-                onChangeText={(text) => handleChange("yearsOld", text)}
-            />
-            <Input
-                placeholder="Хобі"
-                value={form.hobby}
-                onChangeText={(text) => handleChange("hobby", text)}
-            />
+            <Input placeholder="Ім'я" value={form.name} onChangeText={(text) => handleChange("name", text)} />
+            <Input placeholder="Прізвище" value={form.lastname} onChangeText={(text) => handleChange("lastname", text)} />
+            <Input placeholder="Місто" value={form.city} onChangeText={(text) => handleChange("city", text)} />
+            <Input placeholder="Вік" value={form.yearsOld} keyboardType="numeric" onChangeText={(text) => handleChange("yearsOld", text)} />
+            <Input placeholder="Хобі" value={form.hobby} onChangeText={(text) => handleChange("hobby", text)} />
 
             <ButtonGroup>
                 <SaveButton onPress={handleSave}>
