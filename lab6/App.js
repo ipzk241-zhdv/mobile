@@ -1,20 +1,20 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { HomeScreen } from "./src/screens/HomeScreen/HomeScreen";
+import { AuthProvider, useAuth } from "./src/contexts/AuthContext";
+import GuestStack from "./src/screens/GuestStack/GuestStack";
+import AppStack from "./src/screens/AppStack/AppStack";
 
+const AppContent = () => {
+    const { loggedInUser } = useAuth();
+    return <NavigationContainer>{loggedInUser ? <AppStack /> : <GuestStack />}</NavigationContainer>;
+};
 
 const App = () => {
-    const Stack = createNativeStackNavigator();
-
-const {loggedInUser} = useAuth();
-
     return (
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-                <Stack.Screen name="Home" component={HomeScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <AuthProvider>
+            <AppContent />
+        </AuthProvider>
     );
 };
 

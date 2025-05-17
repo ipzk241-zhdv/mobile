@@ -1,35 +1,41 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { TextInput, ActivityIndicator } from "react-native";
 import styled from "styled-components/native";
 import { authentication } from "../../firebase/config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../../contexts/AuthContext";
 
-const LoginScreen = ({ navigation }) => {
+const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const inputRef = useRef();
-    const passwordRef = useRef();
     const { setLoggedInUser } = useAuth();
 
-    const handleLogin = async () => {
+    const handleSignUp = () => {
+        setError("");
+        if (password !== confirmPassword) {
+            setError("Паролі не співпадають");
+            return;
+        }
+
         setLoading(true);
-        signInWithEmailAndPassword(authentication, email, password)
+        createUserWithEmailAndPassword(authentication, email, password)
             .then((res) => {
                 setLoggedInUser(res.user);
             })
-            .catch((err) => {
-                setError("Невірний Email або пароль");
+            .catch((e) => {
+                console.log(e);
+                setError("Помилка реєстрації. Спробуйте ще раз");
             })
             .finally(() => setLoading(false));
     };
 
     return (
         <Container>
-            <Title>Вхід</Title>
+            <Title>Реєстрація</Title>
 
             <StyledInput
                 placeholder="Email"
@@ -40,22 +46,31 @@ const LoginScreen = ({ navigation }) => {
                 placeholderTextColor="#666"
             />
             <StyledInput placeholder="Пароль" secureTextEntry value={password} onChangeText={setPassword} placeholderTextColor="#666" />
+            <StyledInput
+                placeholder="Підтвердження паролю"
+                secureTextEntry
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                placeholderTextColor="#666"
+            />
 
             {error !== "" && <ErrorText>{error}</ErrorText>}
 
-            <Button onPress={handleLogin}>{loading ? <ActivityIndicator size="small" color="white" /> : <ButtonText>Увійти</ButtonText>}</Button>
+            <Button onPress={handleSignUp}>
+                {loading ? <ActivityIndicator size="small" color="white" /> : <ButtonText>Зареєструватись</ButtonText>}
+            </Button>
 
             <Footer>
-                <FooterText>Ще не маєте акаунта?</FooterText>
-                <LoginLink onPress={() => navigation.replace("SignUp")}>
-                    <LoginLinkText>Зареєструватися</LoginLinkText>
+                <FooterText>Вже маєте акаунт?</FooterText>
+                <LoginLink onPress={() => navigation.replace("Login")}>
+                    <LoginLinkText>Увійти</LoginLinkText>
                 </LoginLink>
             </Footer>
         </Container>
     );
 };
 
-export default LoginScreen;
+export default SignUpScreen;
 
 const Container = styled.View`
     flex: 1;
