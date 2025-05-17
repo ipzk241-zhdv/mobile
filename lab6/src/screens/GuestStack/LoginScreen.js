@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { TextInput, ActivityIndicator, View } from "react-native";
+import { TextInput, ActivityIndicator, View, Alert } from "react-native";
 import styled from "styled-components/native";
 import { authentication } from "../../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
