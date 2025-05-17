@@ -1,35 +1,43 @@
 import React, { useRef, useState } from "react";
-import { TextInput, ActivityIndicator, View } from "react-native";
+import { TextInput, ActivityIndicator, Alert } from "react-native";
 import styled from "styled-components/native";
 import { authentication } from "../../firebase/config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../../contexts/AuthContext";
 
-const LoginScreen = ({ navigation }) => {
+const ResetPasswordScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const inputRef = useRef();
-    const passwordRef = useRef();
     const { setLoggedInUser } = useAuth();
 
-    const handleLogin = async () => {
+    const handlePasswordReset = async () => {
+        if (!email) {
+            setError("Введіть email");
+            return;
+        }
+
+        setError("");
         setLoading(true);
-        signInWithEmailAndPassword(authentication, email, password)
-            .then((res) => {
-                setLoggedInUser(res.user);
-            })
-            .catch((err) => {
-                setError("Невірний Email або пароль");
-            })
-            .finally(() => setLoading(false));
+
+        try {
+            await sendPasswordResetEmail(authentication, email);
+            Alert.alert("Лист надіслано", "Перевірте свою пошту для відновлення паролю");
+            navigation.replace("Login");
+        }
+        catch (e) {
+            console.log(e);
+            setError("Не вдалося надіслати лист. Перевірте email.");
+        }
+        finally {
+            setLoading(false);
+        }
     };
 
     return (
         <Container>
-            <Title>Вхід</Title>
+            <Title>Відновлення паролю</Title>
 
             <StyledInput
                 placeholder="Email"
@@ -39,28 +47,21 @@ const LoginScreen = ({ navigation }) => {
                 onChangeText={setEmail}
                 placeholderTextColor="#666"
             />
-            <StyledInput placeholder="Пароль" secureTextEntry value={password} onChangeText={setPassword} placeholderTextColor="#666" />
 
             {error !== "" && <ErrorText>{error}</ErrorText>}
 
-            <Button onPress={handleLogin}>{loading ? <ActivityIndicator size="small" color="white" /> : <ButtonText>Увійти</ButtonText>}</Button>
+            <Button onPress={handlePasswordReset}>{loading ? <ActivityIndicator size="small" color="white" /> : <ButtonText>Надіслати лист</ButtonText>}</Button>
 
             <Footer>
-                <FooterGroup>
-                    <FooterText>Ще не маєте акаунта?</FooterText>
-                    <LoginLink onPress={() => navigation.replace("SignUp")}>
-                        <LoginLinkText>Зареєструватися</LoginLinkText>
-                    </LoginLink>
-                </FooterGroup>
-                <LoginLink onPress={() => navigation.replace("ResetPassword")}>
-                    <LoginLinkText>Забули пароль?</LoginLinkText>
+                <LoginLink onPress={() => navigation.replace("SignUp")}>
+                    <LoginLinkText>← Повернутись до входу</LoginLinkText>
                 </LoginLink>
             </Footer>
         </Container>
     );
 };
 
-export default LoginScreen;
+export default ResetPasswordScreen;
 
 const Container = styled.View`
     flex: 1;
@@ -108,13 +109,9 @@ const ButtonText = styled.Text`
     font-weight: bold;
 `;
 
-const FooterGroup = styled.View`
-    flex-direction: row;
-`
-
 const Footer = styled.View`
     margin-top: 24px;
-    flex-direction: column;
+    flex-direction: row;
 `;
 
 const FooterText = styled.Text`
@@ -123,7 +120,6 @@ const FooterText = styled.Text`
 
 const LoginLink = styled.TouchableOpacity`
     margin-left: 6px;
-    align-items: center;
 `;
 
 const LoginLinkText = styled.Text`
