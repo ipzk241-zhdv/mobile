@@ -3,11 +3,11 @@ import { Alert, ActivityIndicator } from "react-native";
 import styled from "styled-components/native";
 import { resetTo } from "../../navigation/NavigationService";
 import { useAuth } from "../../contexts/AuthContext";
-import authApi from "../../firebase/authApi";
+import { signIn, deleteAccount } from "../../firebase/authApi";
 import api from "../../firebase/api";
 
 const DeleteProfileScreen = () => {
-    const { token, logout, loggedInUser } = useAuth();
+    const { token, loggedInUser, signOut } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -25,17 +25,17 @@ const DeleteProfileScreen = () => {
 
         setLoading(true);
         try {
-            const signInRes = await authApi.post(':signInWithPassword', {
-                email,
-                password,
-                returnSecureToken: true,
+            const signInRes = await signIn(email, password);
+            const idToken = signInRes.idToken;
+
+            await api.delete(`/users/${loggedInUser.uid}.json`, {
+                params: { auth: idToken },
             });
-            const idToken = signInRes.data.idToken;
-            await api.delete(`/users/${loggedInUser.uid}.json?auth=${idToken}`);
-            await authApi.post(':delete', { idToken });
-            await logout();
+
+            await deleteAccount(idToken);
+            await signOut();
         } catch (err) {
-            console.log("Delete error:", err.response?.data || err.message);
+            console.error("Delete error:", err);
             Alert.alert("Помилка", "Не вдалося видалити акаунт. Перевірте дані.");
         } finally {
             setLoading(false);
@@ -45,25 +45,14 @@ const DeleteProfileScreen = () => {
     return (
         <Container>
             <Title>Підтвердження видалення</Title>
-            <Input
-                placeholder="Email"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                value={email}
-                onChangeText={setEmail}
-            />
-            <Input
-                placeholder="Пароль"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-            />
+            <Input placeholder="Email" keyboardType="email-address" autoCapitalize="none" value={email} onChangeText={setEmail} editable={!loading} />
+            <Input placeholder="Пароль" secureTextEntry value={password} onChangeText={setPassword} editable={!loading} />
 
             {loading ? (
                 <ActivityIndicator size="large" />
             ) : (
                 <ButtonGroup>
-                    <BackButton onPress={() => resetTo("Profile")}>                    
+                    <BackButton onPress={() => resetTo("Profile")}>
                         <ButtonText>Назад</ButtonText>
                     </BackButton>
 

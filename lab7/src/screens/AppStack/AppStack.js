@@ -4,6 +4,7 @@ import { View, Text } from "react-native";
 import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
 import DeleteProfileScreen from "./DeleteProfileScreen";
+import CreatePostScreen from "./PostCreateScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,7 @@ const AppStack = () => {
             <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }}></Stack.Screen>
             <Stack.Screen name="EditProfile" component={EditProfileScreen} options={{ headerShown: false }}></Stack.Screen>
             <Stack.Screen name="DeleteProfile" component={DeleteProfileScreen} options={{ headerShown: false }}></Stack.Screen>
-            <Stack.Screen name="PostCreate" component={} options={{ headerShown: false }}></Stack.Screen>
+            <Stack.Screen name="PostCreate" component={CreatePostScreen} options={{ headerShown: false }}></Stack.Screen>
         </Stack.Navigator>
     );
 };

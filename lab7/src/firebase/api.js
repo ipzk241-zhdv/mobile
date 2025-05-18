@@ -1,6 +1,11 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { setLogoutFunction } from "../contexts/AuthContext";
+import fetchNewIdToken from "../contexts/AuthContext"
+
+let logoutFn = null;
+export const setLogoutFunction = (fn) => {
+    logoutFn = fn;
+};
 
 const api = axios.create({
     baseURL: "https://lab6auth-8af55-default-rtdb.europe-west1.firebasedatabase.app",
@@ -27,7 +32,6 @@ api.interceptors.response.use(
             }
             const { refreshToken, user } = JSON.parse(raw);
             try {
-                const { fetchNewIdToken } = await import("./AuthContext");
                 const { idToken: newId, refreshToken: newRef, expiresIn } = await fetchNewIdToken(refreshToken);
                 const newExpiry = Date.now() + expiresIn * 1000;
                 const toStore = { idToken: newId, refreshToken: newRef, expiryDate: newExpiry, user };

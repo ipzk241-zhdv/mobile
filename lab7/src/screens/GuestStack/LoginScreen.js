@@ -54,9 +54,6 @@ const LoginScreen = ({ navigation }) => {
                         <LoginLinkText>Зареєструватися</LoginLinkText>
                     </LoginLink>
                 </FooterGroup>
-                <LoginLink onPress={() => navigation.replace("ResetPassword")}>
-                    <LoginLinkText>Забули пароль?</LoginLinkText>
-                </LoginLink>
             </Footer>
         </Container>
     );

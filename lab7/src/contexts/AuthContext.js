@@ -1,22 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import api, { setLogoutFunction } from "../firebase/api";
 
 const FIREBASE_API_KEY = "AIzaSyCz6wJh1SmlXDABr2Ex9oy2F2EoqoUYKJ0";
 const FIREBASE_REFRESH_URL = `https://securetoken.googleapis.com/v1/token?key=${FIREBASE_API_KEY}`;
-
-export const AuthContext = createContext({
-    token: null,
-    loggedInUser: null,
-    loading: true,
-    signIn: async () => {},
-    signOut: () => {},
-});
-
-let logoutFn = null;
-export const setLogoutFunction = (fn) => {
-    logoutFn = fn;
-};
 
 const fetchNewIdToken = async (refreshToken) => {
     const params = new URLSearchParams({
@@ -30,6 +18,14 @@ const fetchNewIdToken = async (refreshToken) => {
         expiresIn: parseInt(res.data.expires_in, 10),
     };
 };
+
+export const AuthContext = createContext({
+    token: null,
+    loggedInUser: null,
+    loading: true,
+    signIn: async () => {},
+    signOut: async () => {},
+});
 
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
@@ -64,6 +60,7 @@ export const AuthProvider = ({ children }) => {
         };
         tryRestoreSession();
 
+        // Передаємо signOut в api для використання інтерцептором
         setLogoutFunction(async () => {
             await AsyncStorage.removeItem("userData");
             setToken(null);
