@@ -1,6 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import fetchNewIdToken from "../contexts/AuthContext"
+import fetchNewIdToken from "../contexts/AuthContext";
 
 let logoutFn = null;
 export const setLogoutFunction = (fn) => {

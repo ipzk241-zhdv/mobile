@@ -5,6 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import api from "../../firebase/api";
 import { resetTo } from "../../navigation/NavigationService";
 import PostsList from "../components/PostsList";
+import { useNavigation } from "@react-navigation/native";
 
 const REQUIRED_FIELDS = ["name", "lastname", "city", "yearsOld", "hobby"];
 
@@ -12,6 +13,7 @@ const ProfileScreen = () => {
     const { loggedInUser, loading, signOut } = useAuth();
     const [profile, setProfile] = useState(null);
     const [fetching, setFetching] = useState(true);
+    const navigation = useNavigation();
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -100,7 +102,7 @@ const ProfileScreen = () => {
 
             <SectionHeader>
                 <SectionTitle>Пости</SectionTitle>
-                <ActionButton onPress={() => resetTo("PostCreate")}>
+                <ActionButton onPress={() => navigation.navigate("PostCreate")}>
                     <ActionText>Новий</ActionText>
                 </ActionButton>
             </SectionHeader>

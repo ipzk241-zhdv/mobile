@@ -1,11 +1,9 @@
 import api from "./api";
 
 export const fetchPosts = async () => {
-    // 1. Получаем всех пользователей
     const usersRes = await api.get("/users.json");
     const users = usersRes.data || {};
 
-    // 2. Собираем мапу userId → { name, lastname }
     const authorsMap = Object.entries(users).reduce((map, [uid, userData]) => {
         map[uid] = {
             name: userData.name || "",
@@ -14,7 +12,6 @@ export const fetchPosts = async () => {
         return map;
     }, {});
 
-    // 3. Для каждого пользователя вытягиваем его посты
     const postPromises = Object.entries(users).map(async ([userId]) => {
         try {
             const postsRes = await api.get(`/users/${userId}/posts.json`);

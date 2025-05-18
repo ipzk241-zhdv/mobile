@@ -60,7 +60,6 @@ export const AuthProvider = ({ children }) => {
         };
         tryRestoreSession();
 
-        // Передаємо signOut в api для використання інтерцептором
         setLogoutFunction(async () => {
             await AsyncStorage.removeItem("userData");
             setToken(null);

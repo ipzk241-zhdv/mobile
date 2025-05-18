@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { ActivityIndicator, Alert } from "react-native";
+import { ActivityIndicator } from "react-native";
 import styled from "styled-components/native";
 import { signUp as signUpApi } from "../../firebase/authApi";
 import { useAuth } from "../../contexts/AuthContext";
 import api from "../../firebase/api";
-import { resetTo } from "../../navigation/NavigationService";
 
 const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -28,6 +27,8 @@ const SignUpScreen = ({ navigation }) => {
         setLoading(true);
         try {
             const data = await signUpApi(email.trim(), password);
+            await signIn(data);
+
             const userId = data.user.uid;
             const userData = {
                 uid: userId,
@@ -36,8 +37,6 @@ const SignUpScreen = ({ navigation }) => {
                 createdAt: new Date().toISOString(),
             };
             await api.put(`/users/${userId}.json`, userData);
-            Alert.alert("Успішно зареєстровано!", "Щоб продовжити, авторизуйтесь...");
-            resetTo("Login");
         } catch (err) {
             console.error("Sign up error:", err);
             setError("Не вдалося зареєструватися");

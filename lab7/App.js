@@ -10,7 +10,6 @@ const Stack = createNativeStackNavigator();
 
 const AppContent = () => {
     const { loggedInUser } = useAuth();
-
     return <NavigationContainer ref={navigationRef}>{loggedInUser ? <AppStack /> : <GuestStack />}</NavigationContainer>;
 };
 
