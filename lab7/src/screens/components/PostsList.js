@@ -10,21 +10,19 @@ const PostsList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const load = async () => {
             if (!loggedInUser) return;
             try {
-                const response = await api.get(`/users/${loggedInUser.uid}/posts.json`);
-                const data = response.data || {};
-                const list = Object.entries(data).map(([id, item]) => ({ id, ...item }));
+                const list = await fetchPosts(loggedInUser.uid);
                 setPosts(list);
             } catch (err) {
-                console.log("Error fetching posts:", err);
+                console.error("Error fetching posts:", err);
                 Alert.alert("Помилка", "Не вдалося завантажити пости.");
             } finally {
                 setLoading(false);
             }
         };
-        fetchPosts();
+        load();
     }, [loggedInUser]);
 
     if (loading) {
@@ -35,20 +33,17 @@ const PostsList = () => {
         );
     }
 
-    const renderItem = ({ item }) => (
-        <PostCard>
-            <PostTitle>{item.title}</PostTitle>
-            <PostBody>{item.body}</PostBody>
-        </PostCard>
-    );
-
     return (
         <Container>
-            {console.log(posts.length)}
             {posts.length === 0 ? (
                 <EmptyText>Немає постів</EmptyText>
             ) : (
-                <FlatList data={posts} keyExtractor={(item) => item.id} renderItem={renderItem} contentContainerStyle={{ paddingBottom: 16 }} />
+                <FlatList
+                    data={posts}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => <PostListItem post={item} />}
+                    contentContainerStyle={{ paddingBottom: 16 }}
+                />
             )}
         </Container>
     );
