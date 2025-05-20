@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/slices/userSlice";
 import { addOrder } from "../redux/slices/ordersSlice";
 import { clearCart } from "../redux/slices/cartSlice";
+import { CommonActions } from "@react-navigation/native";
 
 const CheckoutScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.items);
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const user = useSelector((state) => state.user);
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -20,10 +22,30 @@ const CheckoutScreen = ({ navigation }) => {
         }
 
         dispatch(setUser({ name, email }));
-        dispatch(addOrder({ items: cartItems, total }));
+        dispatch(
+            addOrder({
+                items: cartItems,
+                total,
+                user: {
+                    name: name,
+                    email: email,
+                },
+            })
+        );
         dispatch(clearCart());
 
-        Alert.alert("Успіх", "Замовлення оформлено успішно!", [{ text: "OK", onPress: () => navigation.navigate("Orders") }]);
+        Alert.alert("Успіх", "Замовлення оформлено успішно!", [
+            {
+                text: "OK",
+                onPress: () =>
+                    navigation.dispatch(
+                        CommonActions.reset({
+                            index: 0,
+                            routes: [{ name: "Catalog" }],
+                        })
+                    ),
+            },
+        ]);
     };
 
     return (

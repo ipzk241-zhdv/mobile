@@ -9,13 +9,13 @@ const ordersSlice = createSlice({
     initialState,
     reducers: {
         addOrder(state, action) {
-            const { items, total } = action.payload;
+            const { items, total, user} = action.payload;
             const date = new Date().toISOString();
             const simplifiedItems = items.map((item) => ({
                 productId: item.id,
                 quantity: item.quantity,
             }));
-            state.orders.unshift({ date, items: simplifiedItems, total });
+            state.orders.unshift({ date, items: simplifiedItems, total, user });
         },
         clearOrders(state) {
             state.orders = [];

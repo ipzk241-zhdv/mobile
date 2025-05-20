@@ -15,12 +15,14 @@ const CartScreen = ({ navigation }) => {
     };
 
     const commitQuantityChange = (id) => {
-        const quantity = parseInt(tempQuantities[id], 10);
-        if (!isNaN(quantity) && quantity > 0) {
-            dispatch(updateQuantity({ id, quantity }));
-        } else {
-            setTempQuantities((prev) => ({ ...prev, [id]: String(getQuantity(id)) }));
+        let quantity = parseInt(tempQuantities[id], 10);
+
+        if (isNaN(quantity) || quantity < 1) {
+            quantity = 1;
         }
+
+        dispatch(updateQuantity({ id, quantity }));
+        setTempQuantities((prev) => ({ ...prev, [id]: String(quantity) }));
     };
 
     const getQuantity = (id) => {

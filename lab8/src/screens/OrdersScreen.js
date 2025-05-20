@@ -15,13 +15,13 @@ const OrdersScreen = () => {
     const renderProductItem = ({ item }) => {
         const product = products.find((p) => p.id === item.productId);
         if (!product) return null;
-
         return (
             <View style={styles.productItem}>
                 <Image source={{ uri: product.image }} style={styles.image} />
                 <View style={styles.productInfo}>
                     <Text style={styles.productName}>{product.name}</Text>
                     <Text>Кількість: {item.quantity}</Text>
+                    <Text>Сума: {parseInt(item.quantity) * product.price}</Text>
                 </View>
             </View>
         );
@@ -29,11 +29,12 @@ const OrdersScreen = () => {
 
     const renderOrder = ({ item }) => {
         const date = new Date(item.date).toLocaleString("uk-UA");
-
         return (
             <View style={styles.orderContainer}>
                 <Text style={styles.date}>Дата: {date}</Text>
                 <Text>Сума: {item.total} грн</Text>
+                <Text>Замовник: {item.user.name}</Text>
+                <Text>Пошта: {item.user.email}</Text>
                 <FlatList
                     data={item.items}
                     renderItem={renderProductItem}
