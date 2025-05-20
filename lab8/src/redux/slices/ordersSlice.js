@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    orders: [], // { date, items, total }
+    orders: [], // { date, items: [{ productId, quantity }], total }
 };
 
 const ordersSlice = createSlice({
@@ -11,10 +11,17 @@ const ordersSlice = createSlice({
         addOrder(state, action) {
             const { items, total } = action.payload;
             const date = new Date().toISOString();
-            state.orders.unshift({ date, items, total });
+            const simplifiedItems = items.map((item) => ({
+                productId: item.id,
+                quantity: item.quantity,
+            }));
+            state.orders.unshift({ date, items: simplifiedItems, total });
+        },
+        clearOrders(state) {
+            state.orders = [];
         },
     },
 });
 
-export const { addOrder } = ordersSlice.actions;
+export const { addOrder, clearOrders } = ordersSlice.actions;
 export default ordersSlice.reducer;

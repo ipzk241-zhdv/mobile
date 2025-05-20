@@ -23,7 +23,7 @@ const CheckoutScreen = ({ navigation }) => {
         dispatch(addOrder({ items: cartItems, total }));
         dispatch(clearCart());
 
-        Alert.alert("Успіх", "Замовлення оформлено успішно!", [{ text: "OK", onPress: () => navigation.navigate("Home") }]);
+        Alert.alert("Успіх", "Замовлення оформлено успішно!", [{ text: "OK", onPress: () => navigation.navigate("Orders") }]);
     };
 
     return (
