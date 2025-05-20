@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 import { Animated } from "react-native";
 import { useRef } from "react";
+import { clearCart } from "../redux/slices/cartSlice";
 
 const CatalogScreen = ({ navigation }) => {
     const products = useSelector((state) => state.products.products);
     const dispatch = useDispatch();
     const [quantities, setQuantities] = useState({});
-
+    
     const changeQuantity = (productId, delta) => {
         setQuantities((prev) => {
             const newQty = Math.max(1, (prev[productId] || 1) + delta);
@@ -17,9 +18,22 @@ const CatalogScreen = ({ navigation }) => {
         });
     };
 
+    const addedAnim = useRef(new Animated.Value(0)).current;
+    const [addedText, setAddedText] = useState("");
+
+    const showAddedAnimation = (name) => {
+        setAddedText(`Додано: ${name}`);
+        Animated.sequence([
+            Animated.timing(addedAnim, { toValue: 1, duration: 300, useNativeDriver: true }),
+            Animated.delay(800),
+            Animated.timing(addedAnim, { toValue: 0, duration: 300, useNativeDriver: true }),
+        ]).start();
+    };
+
     const handleAddToCart = (product) => {
         const quantity = quantities[product.id] || 1;
         dispatch(addToCart({ product, quantity }));
+        showAddedAnimation(product.name);
     };
 
     const renderItem = ({ item }) => (
@@ -47,6 +61,20 @@ const CatalogScreen = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
+            <Animated.View
+                style={{
+                    position: "absolute",
+                    top: 10,
+                    alignSelf: "center",
+                    backgroundColor: "#000",
+                    padding: 8,
+                    borderRadius: 5,
+                    opacity: addedAnim,
+                    zIndex: 1,
+                }}
+            >
+                <Text style={{ color: "#fff" }}>{addedText}</Text>
+            </Animated.View>
             <FlatList
                 data={products}
                 renderItem={renderItem}

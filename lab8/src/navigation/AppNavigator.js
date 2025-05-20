@@ -19,12 +19,12 @@ const AppNavigator = () => {
                     component={CatalogScreen}
                     options={({ Stack }) => ({
                         title: "Каталог товарів",
-                        headerRight: () => <HeaderIcons navigation={Stack}></HeaderIcons>,
+                        headerRight: () => <HeaderIcons></HeaderIcons>,
                     })}
                 />
-                {/* <Stack.Screen name="Cart" component={CartScreen} options={{ title: "Кошик" }} />
+                <Stack.Screen name="Cart" component={CartScreen} options={{ title: "Кошик" }} />
                 <Stack.Screen name="Checkout" component={CheckoutScreen} options={{ title: "Оформлення замовлення" }} />
-                <Stack.Screen name="Orders" component={OrdersScreen} options={{ title: "Історія замовлень" }} /> */}
+                {/* <Stack.Screen name="Orders" component={OrdersScreen} options={{ title: "Історія замовлень" }} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );

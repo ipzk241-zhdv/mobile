@@ -1,11 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { View, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
-const HeaderIcons = ({ navigation }) => {
+const HeaderIcons = () => {
     const cartItems = useSelector((state) => state.cart.items);
     const itemCount = cartItems.length;
+    const navigation = useNavigation();
+
 
     return (
         <View style={{ flexDirection: "row", alignItems: "center", gap: 15, marginRight: 10 }}>
