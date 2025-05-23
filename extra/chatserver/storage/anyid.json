@@ -1,0 +1,56 @@
+[
+  {
+    "action": "join",
+    "name": "zherebtsov",
+    "timestamp": "2025-05-23T18:20:04.961Z"
+  },
+  {
+    "action": "join",
+    "name": "dima",
+    "timestamp": "2025-05-23T18:20:11.709Z"
+  },
+  {
+    "action": "message",
+    "name": "zherebtsov",
+    "message": "hello",
+    "timestamp": "2025-05-23T18:20:15.986Z"
+  },
+  {
+    "action": "message",
+    "name": "dima",
+    "message": "hi",
+    "timestamp": "2025-05-23T18:20:19.305Z"
+  },
+  {
+    "action": "message",
+    "name": "zherebtsov",
+    "message": "How are u",
+    "timestamp": "2025-05-23T18:20:23.972Z"
+  },
+  {
+    "action": "part",
+    "name": "zherebtsov",
+    "timestamp": "2025-05-23T18:20:27.832Z"
+  },
+  {
+    "action": "part",
+    "name": "dima",
+    "timestamp": "2025-05-23T18:20:30.732Z"
+  },
+  {
+    "action": "join",
+    "name": "zherebtsov",
+    "timestamp": "2025-05-23T18:20:36.924Z"
+  },
+  {
+    "action": "message",
+    "name": "zherebtsov",
+    "message": "Some new message",
+    "timestamp": "2025-05-23T18:20:44.261Z"
+  },
+  {
+    "action": "join",
+    "name": "dima",
+    "timestamp": "2025-05-23T18:20:48.691Z"
+  }
+]

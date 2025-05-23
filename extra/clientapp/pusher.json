@@ -1,0 +1,8 @@
+{
+    "app_id": "1997341",
+    "key": "4acbd7c9a818d659a118",
+    "secret": "56b8a57a1f05a262f05b",
+    "cluster": "eu",
+    "useTLS": true,
+    "restServer": "http://10.0.2.2:4000"
+}
